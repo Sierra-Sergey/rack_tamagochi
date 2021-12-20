@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Tamagochi</title>
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
@@ -12,7 +12,12 @@
             elsif @req.cookies['mood'].to_i <= 0
               'Ваш питомец ушел из дома... навсегда'
             end %></h2>
-            <p style="font-size: 10em">🌄</p>
+            <p style="font-size: 10em">
+              <%= if @req.cookies['health'].to_i <= 0
+                    '☠️'
+                  else @req.cookies['mood'].to_i <= 0
+                    '🌄'
+                  end %></p>
     <div>
       <form class="" action="/reset" method="get">
         <button type="submit" name="reset">RESET</button>

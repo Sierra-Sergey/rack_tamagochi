@@ -1,7 +1,6 @@
-require "erb"
+require 'erb'
 
 class Pet
-
   def self.call(env)
     new(env).response.finish
   end
@@ -14,7 +13,7 @@ class Pet
   def response
     case @req.path
     when '/'
-      Rack::Response.new(render("enter_name.html.erb"))
+      Rack::Response.new(render('enter_name.html.erb'))
 
     when '/initialize'
       @name = @req.params['pet_name'] unless @req.params['pet_name'].empty?
@@ -32,8 +31,7 @@ class Pet
       end
 
     when '/game'
-      if @req.cookies['health'].to_i <= 0 ||
-        @req.cookies['phrases'].include?('навсегда')
+      if @req.cookies['health'].to_i <= 0 || @req.cookies['phrases'].include?('навсегда')
         Rack::Response.new do |response|
           response.redirect('/over')
         end
@@ -241,7 +239,9 @@ class Pet
       end
     end
 
-    unless @eating
+    if @eating
+      @bellyful = 100 if @bellyful > 100
+    else
       @bellyful -= rand(5..15)
       @bellyful = 0 if @bellyful.negative?
       if @bellyful.zero?
@@ -254,8 +254,6 @@ class Pet
         @mood -= 5
         @phrases << (p 'В животе урчит')
       end
-    else
-      @bellyful = 100 if @bellyful > 100
     end
 
     @mood = 100 if @mood > 100

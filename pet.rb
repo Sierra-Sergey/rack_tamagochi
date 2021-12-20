@@ -1,4 +1,4 @@
-require "erb"
+require 'erb'
 
 class Pet
   attr_accessor :animal, :name, :health, :bellyful, :peppiness,
@@ -229,7 +229,7 @@ class Pet
     return unless @health <= 0
 
     @emoji = '☠'
-    @health = 0 if @health < 0
+    @health = 0 if @health.negative?
     @phrases.clear << (p 'Ваш питомец умер')
     exit
   end
