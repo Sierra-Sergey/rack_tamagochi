@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title>Tamagochi</title>
+     <link href="css/main.css" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>Тамагочи</h1>
+    </header>
+
+    <section>
+      <h2 hidden>Stats</h2>
+      <article>
+        <h2><%= @req.cookies['name'] %></h2>
+        <div class="">
+          <section>
+            <h4 hidden>Stats</h4>
+            <article class="name_stats">
+              <h5 hidden>Name stats</h5>
+              <p>Здоровье ---------</p>
+              <p>Сытость ----------</p>
+              <p>Бодрость ---------</p>
+              <p>Настроение -------</p>
+              <p>Чистота ----------</p>
+              <p>Туалет -----------</p>
+            </article>
+            <article class="stats">
+              <h5 hidden>Stats</h5>
+              <p><%= @req.cookies['health'] %></p>
+              <p><%= @req.cookies['bellyful'] %></p>
+              <p><%= @req.cookies['peppiness'] %></p>
+              <p><%= @req.cookies['mood'] %></p>
+              <p><%= @req.cookies['purity'] %></p>
+              <p><%= @req.cookies['toilet'] %></p>
+            </article>
+          </section>
+        </div>
+      </article>
+
+      <article>
+        <h2>Emoji</h2>
+        <p class="emoji"><%= @req.cookies['emoji'] %></p>
+        <p><%= @req.cookies['phrases'] %></p>
+      </article>
+
+      <article>
+        <h2>Buttons</h2>
+        <br>
+          <form class="buttons" action="/change" method="get">
+            <button type="submit" name="action" value="feed">Feed</button>
+            <br><br>
+            <button type="submit" name="action" value="sleep">Sleep</button>
+            <br><br>
+            <button type="submit" name="action" value="play">Play</button>
+            <br><br>
+            <button type="submit" name="action" value="bath">Bath</button>
+            <br><br>
+            <button type="submit" name="action" value="toilet">Toilet</button>
+            <br><br>
+            <button type="submit" name="action" value="toss">Toss</button>
+            <br><br>
+            <button type="submit" name="action" value="heal">Heal</button>
+            <br><br>
+            <button type="submit" name="action" value="sweets">Sweets</button>
+            <br><br>
+            <button type="submit" name="action" value="rock">Rock</button>
+            <br><br>
+            <button type="submit" name="action" value="watch">Watch</button>
+          </form>
+      </article>
+    </section>
+    <div>
+      <form class="" action="/reset" method="get">
+        <button type="submit" name="reset">RESET</button>
+      </form>
+    </div>
+  </body>
+</html>
